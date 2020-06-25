@@ -1,0 +1,46 @@
+﻿<Window x:Class="LightYagami.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LightYagami"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="490" Width="800">
+    <StackPanel Background="Black">
+        <StackPanel x:Name="afterChoiseBlock" Visibility="Collapsed">
+            <Label Foreground="White">вставьте текст ниже, чтобы зашифровать его,и нажмите ''зашифровать''</Label>
+            <TextBox x:Name="CryptText" MaxLength="200" Background="#05445c" Foreground="White" TextWrapping="Wrap" Height="160">Bob</TextBox>
+            <Button Background="Lavender" Click="Encrypt" Content="зашифровать"/>
+            <Label Foreground="White">''расшифровать'' полученный текст(для проверки очистите верхнее поле с текстом)</Label>
+            <TextBox x:Name="DecryptText"  Width="780" Background="#f2317f" Height="158" TextWrapping="Wrap" Margin="7,0,6.6,0"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button Background="Lavender" Grid.Column="0" Content="расшифровать" Click="Decrypt_Click"/>
+                <Button Grid.Column="1" Background="Lavender" Click="SaveDecryptText" Content="сохранить"/>
+              </Grid>
+        </StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button  Background="#05445c" Foreground="White" Content="извлечь уже имеющуюся по номеру" Grid.Column="0" Grid.Row="1" Click="GetDataFromDB"/>
+            <Button Content="создать новую запись" Grid.Column="1" Background="#f2317f" Click="NewNote"/>
+        </Grid>
+        <StackPanel x:Name="fromDb" Visibility="Collapsed">
+        <TextBox IsReadOnly="True" TextWrapping="Wrap" Visibility="Collapsed" x:Name="dbTexts" Background="AliceBlue" Height="200"></TextBox>
+        <Label x:Name="keyOrId" Foreground="White">выбрите соответствующий номер дешифрованного текста</Label>
+        <TextBox x:Name="userChoiceIdOrKey"></TextBox>
+        <Button Click="GetTextById" Content="номер выбран" Background="#f2317f"/>
+          </StackPanel>
+    </StackPanel>
+</Window>
